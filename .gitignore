@@ -1,0 +1,8 @@
+1.3P/node_modules/
+1.3P/*.log
+1.3P/npm-debug.log*
+1.3P/.env
+1.3P/.env.*.local
+1.3P/.DS_Store
+1.3P/Thumbs.db
+1.3P/.vscode/
