@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIT725 - Task 2.2P</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #1a73e8;
+        }
+
+        .links {
+            margin-top: 2rem;
+        }
+
+        .links a {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e8f0fe;
+            color: #1a73e8;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .links a:hover {
+            background-color: #d2e3fc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>SIT725 - Task 2.2P</h1>
+        <p>Welcome to the Express Web Server!</p>
+        <p>Student Name: Om Jagtap</p>
+        <p>Student ID: s225435163</p>
+
+        <div class="links">
+            <h3>Test Calculator Endpoints:</h3>
+            <a href="/add?num1=10&num2=5" target="_blank">Add (10 + 5)</a>
+            <a href="/sub?num1=10&num2=5" target="_blank">Subtract (10 - 5)</a>
+            <a href="/mul?num1=10&num2=5" target="_blank">Multiply (10 * 5)</a>
+        </div>
+    </div>
+</body>
+
+</html>
