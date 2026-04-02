@@ -24,40 +24,41 @@ let collection;
 async function runDBConnection() {
     try {
         await client.connect();
-        collection = client.db('ExoticPlantsDB').collection('Plants');
-        console.log('Connected to MongoDB Atlas (ExoticPlantsDB)');
+        // Use a new distinct database and collection
+        collection = client.db('VintageCamerasDB').collection('Cameras');
+        console.log('Connected to MongoDB Atlas (VintageCamerasDB)');
 
         // Seed some data if empty
         const count = await collection.countDocuments();
         if (count === 0) {
             const seedData = [
                 {
-                    name: "Monstera Deliciosa",
-                    scientificName: "Monstera deliciosa",
-                    careLevel: "Medium",
-                    price: "$45.00",
-                    image: "images/plant1.jpg",
-                    description: "Known for its iconic heart-shaped leaves with natural holes."
+                    brand: "Leica",
+                    model: "M3",
+                    year: "1954",
+                    format: "35mm Rangefinder",
+                    image: "images/leica.png",
+                    description: "A legendary 35mm rangefinder camera favored by photojournalists, characterized by its exceptionally bright viewfinder and high-quality build."
                 },
                 {
-                    name: "Fiddle Leaf Fig",
-                    scientificName: "Ficus lyrata",
-                    careLevel: "High",
-                    price: "$60.00",
-                    image: "images/plant2.jpg",
-                    description: "A stunning statement plant with large, violin-shaped leaves."
+                    brand: "Hasselblad",
+                    model: "500C/M",
+                    year: "1970",
+                    format: "Medium Format",
+                    image: "images/hasselblad.png",
+                    description: "An iconic modular medium-format SLR that captured history, including the Apollo space missions to the moon."
                 },
                 {
-                    name: "Snake Plant",
-                    scientificName: "Dracaena trifasciata",
-                    careLevel: "Low",
-                    price: "$25.00",
-                    image: "images/plant3.jpg",
-                    description: "One of the toughest indoor plants, perfect for beginners."
+                    brand: "Nikon",
+                    model: "F",
+                    year: "1959",
+                    format: "35mm SLR",
+                    image: "images/nikon.png",
+                    description: "The professional workhorse of the 60s and 70s. It defined the modern 35mm Single Lens Reflex camera."
                 }
             ];
             await collection.insertMany(seedData);
-            console.log(' Database seeded with initial plants');
+            console.log(' Database seeded with initial vintage cameras');
         }
     } catch (ex) {
         console.error(' MongoDB Connection failed:', ex);
@@ -65,31 +66,31 @@ async function runDBConnection() {
 }
 
 // Controller functions
-const postPlant = async (plant) => {
-    return await collection.insertOne(plant);
+const postCamera = async (camera) => {
+    return await collection.insertOne(camera);
 }
 
-const getAllPlants = async () => {
+const getAllCameras = async () => {
     return await collection.find({}).toArray();
 }
 
 // Routes
-app.get('/api/plants', async (req, res) => {
+app.get('/api/cameras', async (req, res) => {
     try {
-        const result = await getAllPlants();
-        res.json({ statusCode: 200, data: result, message: 'get all plants success' });
+        const result = await getAllCameras();
+        res.json({ statusCode: 200, data: result, message: 'get all cameras success' });
     } catch (err) {
-        res.status(500).json({ statusCode: 500, message: 'error fetching plants' });
+        res.status(500).json({ statusCode: 500, message: 'error fetching cameras' });
     }
 });
 
-app.post('/api/plants', async (req, res) => {
+app.post('/api/cameras', async (req, res) => {
     try {
-        const plant = req.body;
-        const result = await postPlant(plant);
-        res.json({ statusCode: 201, data: result, message: 'plant added successfully' });
+        const camera = req.body;
+        const result = await postCamera(camera);
+        res.json({ statusCode: 201, data: result, message: 'camera added successfully' });
     } catch (err) {
-        res.status(500).json({ statusCode: 500, message: 'error adding plant' });
+        res.status(500).json({ statusCode: 500, message: 'error adding camera' });
     }
 });
 

@@ -3,38 +3,48 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SIT 725 - Exotic Indoor Plants</title>
-    <meta name="description" content="SIT 725 Task 4.2P Exotic Plants Demo">
+    <title>SIT 725 - Vintage Cameras</title>
+    <meta name="description" content="SIT 725 Task 4.2P Vintage Cameras Demo">
+    
+    <!-- Google Fonts for Modern Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
     <!-- Custom Style Sheet-->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <nav>
-        <div class="nav-wrapper navbar-size">
-            <a href="#" class="brand-logo"><img class="user-image-size" src="images/hat.png" alt="Logo" /></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a target="_blank" href="https://github.com/omjagtap100">GitHub</a></li>
-            </ul>
+    <div class="glass-navbar">
+        <nav class="transparent box-shadow-none">
+            <div class="nav-wrapper container">
+                <a href="#" class="brand-logo modern-logo"><i class="material-icons">camera</i> Vintage<span class="highlight">Cams</span></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a target="_blank" href="https://github.com/omjagtap100" class="nav-link">GitHub</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container hero-content center-align">
+            <h1 class="hero-title fade-in">Timeless Precision.</h1>
+            <p class="hero-subtitle slide-up">Discover our curated collection of legendary analog cameras that shaped the history of photography.</p>
+            <a class="waves-effect waves-light btn-large cta-button modal-trigger slide-up delay-1" href="#modal1">
+                <i class="material-icons left">add_a_photo</i> Add Camera
+            </a>
         </div>
-    </nav>
+    </div>
 
     <main class="main-body">
         <div class="container">
             <div class="row">
-                <div class="col s12 center-align">
-                    <h1 id="heading">Exotic Indoor Plants</h1>
-                    <p class="flow-text">Bring nature into your home with our collection of rare and beautiful indoor plants.</p>
-                </div>
-                <div class="col s12 center-align">
-                    <img class="materialboxed materialboxed-image" src="images/livedemo.png" alt="Botanical Garden">
-                </div>
-                <div class="col s12 center-align">
-                    <a class="waves-effect waves-light btn click-me-button modal-trigger" id="clickMeButton" data-target="modal1">
-                        <i class="material-icons left">local_florist</i>Add New Plant
-                    </a>
+                <div class="col s12 section-header">
+                    <h2>Our Collection</h2>
+                    <div class="divider-custom"></div>
                 </div>
             </div>
 
@@ -43,56 +53,74 @@
             </div>
         </div>
 
-        <!-- Modal Structure -->
-        <div id="modal1" class="modal modal-fixed-footer">
-            <div class="row modal-content">
-                <form class="col s12">
+        <!-- Add Camera Modal -->
+        <div id="modal1" class="modal custom-modal modal-fixed-footer">
+            <div class="modal-header">
+                <h4>Add a Vintage Camera</h4>
+                <p>Register a classic analog piece to the database.</p>
+            </div>
+            <div class="modal-content">
+                <form class="col s12" id="cameraForm">
                     <div class="row">
-                        <div class="input-field col s12">
-                            <input placeholder="Enter Plant Name" id="name" type="text" class="validate">
-                            <label for="name">Plant Name</label>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">branding_watermark</i>
+                            <input placeholder="e.g. Leica, Hasselblad" id="brand" type="text" class="validate">
+                            <label for="brand">Brand</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">camera_enhance</i>
+                            <input placeholder="e.g. M3, 500C/M" id="model" type="text" class="validate">
+                            <label for="model">Model</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="scientificName" type="text" class="validate">
-                            <label for="scientificName">Scientific Name</label>
+                            <i class="material-icons prefix">date_range</i>
+                            <input id="year" type="number" class="validate" placeholder="e.g. 1954">
+                            <label for="year">Release Year</label>
                         </div>
                         <div class="input-field col s6">
-                             <select id="careLevel" class="browser-default">
-                                <option value="" disabled selected>Choose Care Level</option>
-                                <option value="Low">Low</option>
-                                <option value="Medium">Medium</option>
-                                <option value="High">High</option>
+                            <i class="material-icons prefix">filter_center_focus</i>
+                            <select id="format" class="browser-default custom-select">
+                                <option value="" disabled selected>Select Film Format</option>
+                                <option value="35mm SLR">35mm SLR</option>
+                                <option value="35mm Rangefinder">35mm Rangefinder</option>
+                                <option value="Medium Format">Medium Format</option>
+                                <option value="Large Format">Large Format</option>
                             </select>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="input-field col s6">
-                            <input id="price" type="text" class="validate">
-                            <label for="price">Price (e.g. $45)</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <input id="image" type="text" class="validate" value="images/plant-placeholder.jpg">
-                            <label for="image">Image Path/URL</label>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">image</i>
+                            <input id="image" type="text" class="validate" value="images/leica.png">
+                            <label for="image">Image File / URL</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea id="description" class="materialize-textarea"></textarea>
+                            <i class="material-icons prefix">description</i>
+                            <textarea id="description" class="materialize-textarea" placeholder="Describe the significance and condition..."></textarea>
                             <label for="description">Description</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12 center-align">
-                            <a class="waves-effect waves-light btn" id="formSubmit">Add to Collection</a>
                         </div>
                     </div>
                 </form>
             </div>
+            <div class="modal-footer custom-modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-red btn-flat">Cancel</a>
+                <a class="waves-effect waves-light btn add-btn" id="formSubmit">Add Camera</a>
+            </div>
         </div>
     </main>
 
+    <!-- Footer -->
+    <footer class="page-footer custom-footer">
+        <div class="container center-align">
+            <p>© 2026 SIT725 - Vintage Cameras Collection. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="js/scripts.js"></script>
