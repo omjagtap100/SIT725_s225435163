@@ -1,0 +1,17 @@
+{
+  "name": "4.2p",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Task 4.2P - Rare Books Collection with MongoDB integration",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongodb": "^6.10.0"
+  }
+}
