@@ -25,8 +25,8 @@ async function runDBConnection() {
     try {
         await client.connect();
         collection = client.db('ExoticPlantsDB').collection('Plants');
-        console.log('✅ Connected to MongoDB Atlas (ExoticPlantsDB)');
-        
+        console.log('Connected to MongoDB Atlas (ExoticPlantsDB)');
+
         // Seed some data if empty
         const count = await collection.countDocuments();
         if (count === 0) {
@@ -57,10 +57,10 @@ async function runDBConnection() {
                 }
             ];
             await collection.insertMany(seedData);
-            console.log('📦 Database seeded with initial plants');
+            console.log(' Database seeded with initial plants');
         }
     } catch (ex) {
-        console.error('❌ MongoDB Connection failed:', ex);
+        console.error(' MongoDB Connection failed:', ex);
     }
 }
 
