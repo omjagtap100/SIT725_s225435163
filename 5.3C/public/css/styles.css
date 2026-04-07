@@ -1,0 +1,121 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.5;
+  color: #1a1a1a;
+  background: #f6f3f0;
+}
+
+.site-header {
+  padding: 1.5rem 1.25rem;
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+.site-header h1 {
+  margin: 0 0 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.instructions {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+.primary-button {
+  display: inline-block;
+  padding: 0.55rem 1.1rem;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  color: #2c3e50;
+  background: #ecf0f1;
+  border: none;
+  border-radius: 4px;
+}
+
+.primary-button:hover {
+  background: #fff;
+}
+
+.primary-button:focus {
+  outline: 2px solid #bdc3c7;
+  outline-offset: 2px;
+}
+
+.main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 2.5rem;
+}
+
+.status {
+  margin: 0 0 1rem;
+  color: #555;
+  min-height: 1.5rem;
+}
+
+.list-section {
+  margin-bottom: 1.5rem;
+}
+
+.book-list {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.book-item {
+  margin-bottom: 0.4rem;
+  cursor: pointer;
+  padding: 0.15rem 0;
+}
+
+.book-item:hover {
+  text-decoration: underline;
+}
+
+.book-item.is-selected {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.detail-panel {
+  border: 1px solid #c8c2bb;
+  border-radius: 6px;
+  padding: 1rem 1.15rem;
+  background: #fff;
+}
+
+.panel-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+}
+
+.detail-list {
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(6rem, 9rem) 1fr;
+  gap: 0.35rem 1rem;
+}
+
+.detail-list dt {
+  margin: 0;
+  font-weight: 600;
+  color: #444;
+}
+
+.detail-list dd {
+  margin: 0;
+}
+
+.detail-list .summary {
+  white-space: pre-wrap;
+}
