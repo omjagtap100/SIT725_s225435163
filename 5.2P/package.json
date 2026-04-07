@@ -1,0 +1,16 @@
+{
+  "name": "sit725-5.2p-books-mvc",
+  "version": "1.0.0",
+  "description": "SIT725 5.2P — Books catalog (MVC, read-only API + vanilla client)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

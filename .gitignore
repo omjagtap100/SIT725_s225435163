@@ -30,3 +30,11 @@
 4.2P/.DS_Store
 4.2P/Thumbs.db
 4.2P/.vscode/
+5.2P/node_modules/
+5.2P/*.log
+5.2P/npm-debug.log*
+5.2P/.env
+5.2P/.env.*.local
+5.2P/.DS_Store
+5.2P/Thumbs.db
+5.2P/.vscode/

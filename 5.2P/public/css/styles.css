@@ -1,0 +1,57 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.5;
+  color: #1a1a1a;
+  background: #f6f3f0;
+}
+
+.site-header {
+  padding: 1.5rem 1.25rem;
+  background: #2c3e50;
+  color: #ecf0f1;
+}
+
+.site-header h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.65rem;
+  font-weight: 600;
+}
+
+.lede {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.lede code {
+  background: rgba(255, 255, 255, 0.12);
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+}
+
+.main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 2.5rem;
+}
+
+.status {
+  margin: 0 0 1rem;
+  color: #555;
+}
+
+.book-list {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.book-item {
+  margin-bottom: 0.5rem;
+}

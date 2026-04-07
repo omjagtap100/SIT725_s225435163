@@ -4,12 +4,12 @@ const path = require('path');
 const app = express();
 const port = process.env.port || 3000;
 
-// Middleware
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// MongoDB Connection
+
 const uri = "mongodb+srv://omjagtap3304_db_user:bu24sMMXlXo5jO8G@cluster0.zyrfzy8.mongodb.net/";
 const client = new MongoClient(uri, {
     serverApi: {
@@ -24,11 +24,11 @@ let collection;
 async function runDBConnection() {
     try {
         await client.connect();
-        // Use a new distinct database and collection
+   
         collection = client.db('VintageCamerasDB').collection('Cameras');
         console.log('Connected to MongoDB Atlas (VintageCamerasDB)');
 
-        // Seed some data if empty
+  
         const count = await collection.countDocuments();
         if (count === 0) {
             const seedData = [
@@ -65,7 +65,7 @@ async function runDBConnection() {
     }
 }
 
-// Controller functions
+
 const postCamera = async (camera) => {
     return await collection.insertOne(camera);
 }
@@ -74,7 +74,7 @@ const getAllCameras = async () => {
     return await collection.find({}).toArray();
 }
 
-// Routes
+
 app.get('/api/cameras', async (req, res) => {
     try {
         const result = await getAllCameras();
@@ -94,7 +94,8 @@ app.post('/api/cameras', async (req, res) => {
     }
 });
 
-app.listen(port, () => {
-    console.log(`App listening to: ${port}`);
-    runDBConnection();
+runDBConnection().then(() => {
+    app.listen(port, () => {
+        console.log(`App listening to: ${port}`);
+    });
 });
