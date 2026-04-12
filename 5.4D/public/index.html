@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SIT725 5.4D — Books Catalogue</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Books Catalogue developed by s225435163</h1>
+    <p class="instructions">Click the button below to get all food items from the server:</p>
+    <button type="button" class="primary-button" id="getAllBooksBtn">Get all books</button>
+  </header>
+
+  <main class="main">
+    <p id="status" class="status" aria-live="polite"></p>
+
+    <section id="list-section" class="list-section" hidden>
+      <ul class="book-list" id="book-list"></ul>
+    </section>
+
+    <section class="panel detail-panel" id="detail-section" hidden>
+      <h2 class="panel-title">Book details</h2>
+      <dl class="detail-list" id="book-detail"></dl>
+    </section>
+  </main>
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>

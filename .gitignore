@@ -46,3 +46,11 @@
 5.3C/.DS_Store
 5.3C/Thumbs.db
 5.3C/.vscode/
+5.4D/node_modules/
+5.4D/*.log
+5.4D/npm-debug.log*
+5.4D/.env
+5.4D/.env.*.local
+5.4D/.DS_Store
+5.4D/Thumbs.db
+5.4D/.vscode/

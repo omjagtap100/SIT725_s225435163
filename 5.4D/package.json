@@ -1,0 +1,19 @@
+{
+  "name": "sit725-5.4d-books-ethical-validation",
+  "version": "1.0.0",
+  "description": "SIT725 5.4D — MVC + Mongoose safe writes + validation tests",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node scripts/seed.js",
+    "test": "node validation-tests.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^8.8.4",
+    "mongodb": "^6.10.0"
+  }
+}
