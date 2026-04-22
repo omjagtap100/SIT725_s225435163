@@ -352,6 +352,184 @@ async function run() {
     tags: ["UPDATE_FAIL", "LENGTH"]
   });
 
+  await test({
+    id: "T17",
+    name: "CREATE id exceeds max length",
+    method: "POST",
+    path: createPath,
+    expected: 400,
+    body: makeValidBook(`b${"z".repeat(64)}`),
+    tags: ["CREATE_FAIL", "LENGTH"]
+  });
+
+  const bNonIntegerYear = makeValidBook(rid("m18"));
+  bNonIntegerYear.year = 2020.5;
+  await test({
+    id: "T18",
+    name: "CREATE year must be integer",
+    method: "POST",
+    path: createPath,
+    expected: 400,
+    body: bNonIntegerYear,
+    tags: ["CREATE_FAIL", "TYPE"]
+  });
+
+  const bPriceAboveMax = makeValidBook(rid("m19"));
+  bPriceAboveMax.price = "1000000";
+  await test({
+    id: "T19",
+    name: "CREATE price above maximum",
+    method: "POST",
+    path: createPath,
+    expected: 400,
+    body: bPriceAboveMax,
+    tags: ["CREATE_FAIL", "BOUNDARY"]
+  });
+
+  const bShortGenre = makeValidBook(rid("m20"));
+  bShortGenre.genre = "A";
+  await test({
+    id: "T20",
+    name: "CREATE genre too short",
+    method: "POST",
+    path: createPath,
+    expected: 400,
+    body: bShortGenre,
+    tags: ["CREATE_FAIL", "LENGTH"]
+  });
+
+  const bLongAuthor = makeValidBook(rid("m21"));
+  bLongAuthor.author = "A".repeat(201);
+  await test({
+    id: "T21",
+    name: "CREATE author exceeds max length",
+    method: "POST",
+    path: createPath,
+    expected: 400,
+    body: bLongAuthor,
+    tags: ["CREATE_FAIL", "LENGTH"]
+  });
+
+  const bLongSummary = makeValidBook(rid("m22"));
+  bLongSummary.summary = "S".repeat(20001);
+  await test({
+    id: "T22",
+    name: "CREATE summary exceeds max length",
+    method: "POST",
+    path: createPath,
+    expected: 400,
+    body: bLongSummary,
+    tags: ["CREATE_FAIL", "LENGTH"]
+  });
+
+  const bMissingId = makeValidBook(rid("m23"));
+  delete bMissingId.id;
+  await test({
+    id: "T23",
+    name: "CREATE missing id",
+    method: "POST",
+    path: createPath,
+    expected: 400,
+    body: bMissingId,
+    tags: ["CREATE_FAIL", "REQUIRED"]
+  });
+
+  const bMissingAuthor = makeValidBook(rid("m24"));
+  delete bMissingAuthor.author;
+  await test({
+    id: "T24",
+    name: "CREATE missing author",
+    method: "POST",
+    path: createPath,
+    expected: 400,
+    body: bMissingAuthor,
+    tags: ["CREATE_FAIL", "REQUIRED"]
+  });
+
+  const bMissingYear = makeValidBook(rid("m25"));
+  delete bMissingYear.year;
+  await test({
+    id: "T25",
+    name: "CREATE missing year",
+    method: "POST",
+    path: createPath,
+    expected: 400,
+    body: bMissingYear,
+    tags: ["CREATE_FAIL", "REQUIRED"]
+  });
+
+  const bMissingGenre = makeValidBook(rid("m26"));
+  delete bMissingGenre.genre;
+  await test({
+    id: "T26",
+    name: "CREATE missing genre",
+    method: "POST",
+    path: createPath,
+    expected: 400,
+    body: bMissingGenre,
+    tags: ["CREATE_FAIL", "REQUIRED"]
+  });
+
+  const bMissingSummary2 = makeValidBook(rid("m27"));
+  delete bMissingSummary2.summary;
+  await test({
+    id: "T27",
+    name: "CREATE missing summary",
+    method: "POST",
+    path: createPath,
+    expected: 400,
+    body: bMissingSummary2,
+    tags: ["CREATE_FAIL", "REQUIRED"]
+  });
+
+  const bMissingPrice = makeValidBook(rid("m28"));
+  delete bMissingPrice.price;
+  await test({
+    id: "T28",
+    name: "CREATE missing price",
+    method: "POST",
+    path: createPath,
+    expected: 400,
+    body: bMissingPrice,
+    tags: ["CREATE_FAIL", "REQUIRED"]
+  });
+
+  const bShortAuthor = makeValidBook(rid("m29"));
+  bShortAuthor.author = "A";
+  await test({
+    id: "T29",
+    name: "CREATE author too short",
+    method: "POST",
+    path: createPath,
+    expected: 400,
+    body: bShortAuthor,
+    tags: ["CREATE_FAIL", "LENGTH"]
+  });
+
+  const bLongGenre = makeValidBook(rid("m30"));
+  bLongGenre.genre = "G".repeat(101);
+  await test({
+    id: "T30",
+    name: "CREATE genre exceeds max length",
+    method: "POST",
+    path: createPath,
+    expected: 400,
+    body: bLongGenre,
+    tags: ["CREATE_FAIL", "LENGTH"]
+  });
+
+  const bInvalidPriceType = makeValidBook(rid("m31"));
+  bInvalidPriceType.price = "not-a-number";
+  await test({
+    id: "T31",
+    name: "CREATE invalid price type",
+    method: "POST",
+    path: createPath,
+    expected: 400,
+    body: bInvalidPriceType,
+    tags: ["CREATE_FAIL", "TYPE"]
+  });
+
   const pass = logSummary();
   logCoverage();
 
