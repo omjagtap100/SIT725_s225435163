@@ -1,0 +1,23 @@
+{
+  "name": "sit725-5.3c-books-mvc-mongo",
+  "version": "1.0.0",
+  "description": "SIT725 5.3C — Books catalog (MVC + MongoDB, read-only API)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node scripts/seed.js",
+    "test": "mocha --reporter spec \"test/**/*.test.js\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongodb": "^6.10.0"
+  },
+  "devDependencies": {
+    "chai": "^6.2.2",
+    "mocha": "^11.7.5",
+    "supertest": "^7.2.2"
+  }
+}
