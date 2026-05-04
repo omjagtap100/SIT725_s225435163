@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SIT725 7.2P - Live Topic Poll</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Live Topic Poll (Socket.IO)</h1>
+    <p class="subtitle">Custom 7.2P implementation with real-time updates across all connected clients.</p>
+  </header>
+
+  <main class="main">
+    <p class="status">Online users: <strong id="online-users">0</strong></p>
+
+    <section class="panel">
+      <h2>Vote for your next workshop focus</h2>
+      <div class="button-row">
+        <button class="vote-button" data-topic="backend">Backend APIs</button>
+        <button class="vote-button" data-topic="frontend">Frontend UI</button>
+        <button class="vote-button" data-topic="cloud">Cloud Deployments</button>
+      </div>
+      <p id="message" class="message" aria-live="polite"></p>
+    </section>
+
+    <section class="panel">
+      <h2>Live Results</h2>
+      <ul class="results-list">
+        <li>Backend APIs: <strong id="backend-count">0</strong></li>
+        <li>Frontend UI: <strong id="frontend-count">0</strong></li>
+        <li>Cloud Deployments: <strong id="cloud-count">0</strong></li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>

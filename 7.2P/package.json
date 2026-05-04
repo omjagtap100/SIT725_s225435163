@@ -1,0 +1,16 @@
+{
+  "name": "sit725-7.2p-socket-programming",
+  "version": "1.0.0",
+  "description": "SIT725 7.2P custom Express + Socket.IO real-time application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1",
+    "socket.io": "^4.8.3"
+  }
+}

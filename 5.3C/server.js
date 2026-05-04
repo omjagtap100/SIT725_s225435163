@@ -1,12 +1,9 @@
-const express = require('express');
-const path = require('path');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
 const { DB_NAME, COLLECTION_NAME } = require('./models/book.model');
 const booksService = require('./services/books.service');
-const booksRoute = require('./routes/books.routes');
+const app = require('./app');
 
-const app = express();
 const port = process.env.port || 3000;
 
 
@@ -19,17 +16,6 @@ const client = new MongoClient(uri, {
     strict: true,
     deprecationErrors: true
   }
-});
-
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-app.use('/api', booksRoute);
-
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(500).json({ message: 'Server error' });
 });
 
 async function run() {

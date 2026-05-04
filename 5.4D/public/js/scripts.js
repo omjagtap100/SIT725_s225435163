@@ -19,7 +19,7 @@
 
   function renderBookList(books) {
     bookList.innerHTML = '';
-    books.forEach(function (book) {
+    books.forEach(function (book) {x
       const li = document.createElement('li');
       li.className = 'book-item';
       li.tabIndex = 0;

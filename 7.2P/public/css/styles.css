@@ -1,0 +1,79 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #1a1a1a;
+  background: #f6f8fb;
+}
+
+.site-header {
+  background: #1f3a5f;
+  color: #fff;
+  padding: 1.5rem 1.25rem;
+}
+
+.site-header h1 {
+  margin: 0 0 0.5rem;
+}
+
+.subtitle {
+  margin: 0;
+  opacity: 0.95;
+}
+
+.main {
+  max-width: 45rem;
+  margin: 0 auto;
+  padding: 1.25rem;
+}
+
+.status {
+  margin: 0 0 1rem;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid #dde3ea;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.panel h2 {
+  margin-top: 0;
+}
+
+.button-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.vote-button {
+  border: none;
+  background: #2f80ed;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.55rem 0.9rem;
+  cursor: pointer;
+}
+
+.vote-button:hover {
+  background: #1f6fdb;
+}
+
+.message {
+  min-height: 1.2rem;
+  margin: 0.9rem 0 0;
+  color: #404b57;
+}
+
+.results-list {
+  margin: 0;
+  padding-left: 1rem;
+}

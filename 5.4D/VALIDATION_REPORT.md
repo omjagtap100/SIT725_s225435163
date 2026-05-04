@@ -12,7 +12,7 @@ https://github.com/omjagtap100/SIT725_s225435163/5.4D
 
 **Figure 2 — Automated validation suite (`node validation-tests.js`): all tests pass against `http://localhost:3000`.**
 
-![1776003568052](image/VALIDATION_REPORT/1776003568052.png)
+![1776840735528](image/VALIDATION_REPORT/1776840735528.png)
 
 ## Table of validation rules (by field)
 
