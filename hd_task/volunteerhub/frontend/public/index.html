@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VolunteerHub - Auth</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a> 
+    <header class="topbar shell">
+      <div class="brand">
+        <div class="brand-badge">VH</div>
+        <div>
+          <h1>VolunteerHub</h1>
+          <p>Community Event and Volunteer Management Platform</p>
+        </div>
+      </div>
+      <div class="userbar">
+        <span id="currentUser" class="pill">Not logged in</span>
+      </div>
+    </header>
+
+    <main id="main-content" class="shell" style="margin-top: 16px; max-width: 700px;">
+      <section class="panel auth-panel">
+      <div class="tabs" role="tablist" aria-label="Authentication">
+          <button class="tab active" type="button" role="tab" aria-selected="true" data-tab="registerTab">Register</button>
+          <button class="tab" type="button" role="tab" aria-selected="false" data-tab="loginTab">Login</button> 
+        </div>
+
+        <div id="registerTab" class="tab-content">
+          <h2>Create Account</h2>
+          <p class="subtext">Choose your role and get started.</p>
+          <form id="registerForm">
+            <label for="regName">Name</label>
+            <input type="text" id="regName" placeholder="Full name" required />
+            <label for="regEmail">Email</label>
+            <input type="email" id="regEmail" placeholder="you@example.com" required />
+            <label for="regPassword">Password</label>
+            <input type="password" id="regPassword" placeholder="Minimum 8 characters" required />
+            <label for="regRole">Role</label>
+            <select id="regRole" required>
+              <option value="Volunteer">Volunteer</option>
+              <option value="OrganisationManager">Organisation Manager</option>
+              <option value="Admin">Admin</option>
+            </select>
+            <button type="submit">Register</button>
+          </form>
+        </div>
+
+        <div id="loginTab" class="tab-content hidden">
+          <h2>Welcome Back</h2>
+          <p class="subtext">Log in to access your dashboard.</p>
+          <form id="loginForm">
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" placeholder="you@example.com" required />
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" placeholder="Your password" required />
+            <button type="submit">Login</button>
+          </form>
+         <h3 style="margin-top: 20px;">Forgot password</h3>
+          <form id="forgotForm" aria-label="Request password reset">
+            <label for="forgotEmail">Account email</label>
+            <input type="email" id="forgotEmail" placeholder="you@example.com" required autocomplete="email" />
+            <button type="submit" class="ghost">Send reset token</button> 
+          </form>
+            <form id="resetForm" aria-label="Reset password with token">
+            <label for="resetToken">Reset token</label>
+            <input type="text" id="resetToken" placeholder="Token from email" required autocomplete="one-time-code" />
+            <label for="resetPassword">New password</label>
+            <input type="password" id="resetPassword" placeholder="Minimum 8 characters" required minlength="8" autocomplete="new-password" />
+            <button type="submit" class="ghost">Set new password</button>
+ 
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <section class="shell panel log-panel">
+      <div class="section-head">
+        <h3>Activity Log</h3>
+        <button id="clearLogBtn" class="ghost">Clear</button>
+      </div>
+     <pre id="logBox" role="log" aria-live="polite" aria-relevant="additions"></pre> 
+    </section>
+
+    <script src="/auth.js"></script>
+  </body>
+</html>

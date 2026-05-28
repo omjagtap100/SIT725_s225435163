@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VolunteerHub - Sprint 1 Dashboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header class="topbar shell">
+      <div class="brand">
+        <div class="brand-badge">VH</div>
+        <div>
+          <h1>VolunteerHub</h1>
+          <p>Sprint 1 — Organizations</p>
+        </div>
+      </div>
+      <div class="userbar">
+        <div id="notificationToast" class="pill hidden" role="status" aria-live="polite"></div>
+        <span id="currentUser" class="pill">Not logged in</span>
+        <button id="logoutBtn" class="ghost">Logout</button>
+      </div>
+    </header>
+
+    <main id="main-content" class="shell layout">
+      <section class="panel content-panel" style="grid-column: 1 / -1;">
+        
+        <p class="subtext" style="margin-bottom: 16px;">
+          Sprint scope: auth, organisations, profiles, and events (create, edit, cancel, detail with role capacity).
+        </p>
+
+        <form id="eventFilterForm" class="manager-form" style="margin-bottom: 16px;">
+          <h3>Filter events (FR-13)</h3>
+          <p class="subtext">Filter by category, date range, or location (suburb/postcode).</p>
+          <div class="row-2">
+            <input type="text" id="filterCategory" placeholder="Category" />
+            <input type="text" id="filterLocation" placeholder="Location / suburb / postcode" />
+          </div>
+          <div class="row-2">
+            <input type="date" id="filterStartDate" />
+            <input type="date" id="filterEndDate" />
+          </div>
+          <div class="actions">
+            <button type="submit" class="ghost">Apply filters</button>
+            <button type="button" id="clearFiltersBtn" class="ghost">Clear</button>
+          </div>
+        </form>
+
+        <div class="section-head">
+<h2>Upcoming events</h2>    
+      <button id="refreshEventsBtn" class="ghost" type="button">Refresh</button>
+        </div>
+         <div id="eventsList" class="event-grid" style="margin-bottom: 12px;"></div>
+        <div id="eventsPagination" class="actions" style="margin-bottom: 20px; flex-wrap: wrap; gap: 8px; align-items: center;">
+          <button type="button" id="eventsPrevBtn" class="ghost">Previous</button>
+          <span id="eventsPageInfo" class="pill">Page 1 of 1</span>
+          <button type="button" id="eventsNextBtn" class="ghost">Next</button>
+          <label for="eventsLimitSelect" class="subtext" style="margin:0;">Per page</label>
+          <select id="eventsLimitSelect" style="max-width:80px;">
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="20">20</option>
+          </select>
+        </div>
+
+        <div class="manager-panel">
+          <h3>My profile</h3>
+          <p class="subtext">Keep your personal details up to date for volunteering and organisation coordination.</p>
+          <form id="profileForm" class="manager-form">
+            <label for="profileName">Name</label>
+            <input type="text" id="profileName" placeholder="Full name" required />
+            <div class="row-2">
+              <div>
+                <label for="profileEmail">Email</label>
+                <input type="email" id="profileEmail" placeholder="Email" disabled />
+              </div>
+              <div>
+                <label for="profilePhone">Phone</label>
+                <input type="text" id="profilePhone" placeholder="Phone number" />
+              </div>
+            </div>
+            <label for="profileBio">Bio</label>
+            <textarea id="profileBio" rows="4" placeholder="Tell others a little about yourself"></textarea>
+            <label for="profileSkills">Skills</label>
+            <input type="text" id="profileSkills" placeholder="Comma-separated skills, e.g. First aid, Teamwork" />
+            <button type="submit" class="ghost">Save profile</button>
+          </form>
+        </div>
+
+        <div id="volunteerPanel" class="manager-panel hidden">
+ <h3>Volunteer</h3>
+          <p class="subtext">Browse events, apply from <strong>View details</strong>, check in when accepted, and review your participation history .</p>
+          <div id="participationSummary" class="event-card hidden" style="margin-bottom: 12px;"></div>
+          <div class="actions">
+          <button type="button" id="loadHistoryBtn" class="ghost">Refresh participation history </button>
+          </div>
+          <div id="participationHistoryList" class="event-grid"></div>
+          <h4 style="margin-top: 20px;">Active applications</h4>
+          <div class="actions">
+            <button type="button" id="loadMyAppsBtn" class="ghost">Refresh applications</button>
+          </div>
+          <div id="myApplicationsList" class="event-grid"></div>
+        </div>
+
+        <div id="managerPanel" class="manager-panel hidden">
+          <h3>Organisation manager</h3>
+          <div id="managerOrgStatus" class="event-card" style="margin-bottom:12px;"></div>
+
+          <form id="createEventForm" class="manager-form">
+            <h4>Create event </h4>
+            <input type="text" id="eventTitle" placeholder="Event title" required />
+            <input type="text" id="eventDescription" placeholder="Description" required />
+            <div class="row-2">
+              <input type="date" id="eventDate" required />
+              <input type="time" id="eventStartTime" required />
+            </div>
+            <div class="row-2">
+              <input type="time" id="eventEndTime" required />
+              <input type="text" id="eventLocation" placeholder="Location" required />
+            </div>
+            <div class="row-2">
+              <input type="text" id="eventCategory" placeholder="Category" required />
+              <input type="number" id="eventMaxVolunteers" placeholder="Max volunteers" required min="1" />
+            </div>
+            <h4>Volunteer roles</h4>
+            <p class="subtext">Add one or more roles with title, description, skills, and capacity.</p>
+            <div id="rolesList" class="event-grid" style="margin-bottom: 12px;"></div>
+            <button type="button" id="addRoleBtn" class="ghost">Add role</button>
+            <button type="submit" class="ghost" id="createEventBtn" style="margin-left: 8px;">Create event</button>
+          </form>
+
+          <form id="editEventForm" class="manager-form hidden">
+            <h4>Edit event </h4>
+            <input type="hidden" id="editEventId" />
+            <input type="text" id="editEventTitle" placeholder="Event title" required />
+            <input type="text" id="editEventDescription" placeholder="Description" required />
+            <div class="row-2">
+              <input type="date" id="editEventDate" required />
+              <input type="time" id="editEventStartTime" required />
+            </div>
+            <div class="row-2">
+              <input type="time" id="editEventEndTime" required />
+              <input type="text" id="editEventLocation" placeholder="Location" required />
+            </div>
+            <div class="row-2">
+              <input type="text" id="editEventCategory" placeholder="Category" required />
+              <input type="number" id="editEventMaxVolunteers" placeholder="Max volunteers" required min="1" />
+            </div>
+            <button type="submit" class="ghost">Save changes</button>
+            <button type="button" id="cancelEditEventBtn" class="ghost">Cancel edit</button>
+          </form>
+
+           <div class="manager-form">
+           <h4>Review applications  &amp; export </h4>
+            <p class="subtext">Load applications for an event, accept or decline volunteers, then export participation as CSV.</p>
+            <div class="row-2">
+              <input type="text" id="reviewEventId" placeholder="Paste event ID from event card" />
+              <button type="button" id="loadEventAppsBtn" class="ghost">Load applications</button>
+            </div>
+            <div class="actions" style="margin-bottom: 12px;">
+              <button type="button" id="exportEventCsvBtn" class="ghost">Export participation CSV </button>
+            </div>
+            <div id="managerApplicationsList" class="event-grid"></div>
+          </div>
+
+          <form id="orgForm" class="manager-form">
+            <h4>Register organisation</h4>
+            <input type="text" id="orgName" placeholder="Organisation name" required />
+            <input type="text" id="orgDescription" placeholder="Description" required />
+            <div class="row-2">
+              <input type="text" id="orgCategory" placeholder="Category" required />
+              <input type="text" id="orgAddress" placeholder="Address" required />
+            </div>
+            <input type="email" id="orgEmail" placeholder="Contact email" required />
+            <button type="submit" class="ghost">Submit organisation (Pending)</button>
+          </form>
+        </div>
+
+        <div id="adminPanel" class="manager-panel hidden">
+         <h3>Admin — organisations &amp; events</h3>
+          <p class="subtext">Approve or reject organisations, or permanently delete an organisation or event.</p>
+          <div class="actions">
+            <button id="loadOrgsBtn" class="ghost" type="button">Load organisations</button>
+          </div>
+          <div id="adminDataList" class="event-grid"></div>
+        </div>
+      </section>
+    </main>
+
+    <section class="shell panel log-panel">
+      <div class="section-head">
+        <h3>Activity Log</h3>
+        <button id="clearLogBtn" class="ghost">Clear</button>
+      </div>
+      <pre id="logBox" role="log" aria-live="polite" aria-relevant="additions"></pre>
+    </section>
+
+    <script src="/dashboard.js"></script>
+  </body>
+</html>

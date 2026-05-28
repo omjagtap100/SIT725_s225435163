@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VolunteerHub - Event Details</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar shell">
+      <div class="brand">
+        <div class="brand-badge">VH</div>
+        <div>
+          <h1>VolunteerHub</h1>
+          <p>Event Details</p>
+        </div>
+      </div>
+      <div class="userbar">
+        <a href="/dashboard" class="ghost" style="text-decoration:none;padding:8px 10px;">Back</a>
+        <span id="currentUser" class="pill">Not logged in</span>
+        <button id="logoutBtn" class="ghost">Logout</button>
+      </div>
+    </header>
+
+    <main class="shell" style="margin-top:16px;">
+      <section class="panel">
+        <div id="eventDetail"></div>
+      </section>
+    </main>
+
+    <section class="shell panel log-panel">
+      <div class="section-head">
+        <h3>Activity Log</h3>
+      </div>
+      <pre id="logBox"></pre>
+    </section>
+
+    <script src="/event.js"></script>
+  </body>
+</html>
