@@ -1,7 +1,9 @@
 const logBox = document.getElementById("logBox");
 const tabs = document.querySelectorAll(".tab");
 const tabContents = document.querySelectorAll(".tab-content");
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL =
+  window.__CONFIG__?.API_BASE_URL ||
+  `${window.location.protocol}//${window.location.hostname}:5000`;
 function log(message) {
   const time = new Date().toLocaleTimeString();
   logBox.textContent = `[${time}] ${message}\n` + logBox.textContent;

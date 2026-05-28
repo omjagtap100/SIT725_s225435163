@@ -2,6 +2,8 @@ services:
   mongo:
     image: mongo:7
     restart: unless-stopped
+    ports:
+      - "27017:27017"
     volumes:
       - mongo_data:/data/db
     healthcheck:
@@ -12,11 +14,15 @@ services:
       start_period: 10s
 
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+      args:
+        PORT: 5000
     restart: unless-stopped
     ports:
       - "5000:5000"
     environment:
+      NODE_ENV: production
       PORT: 5000
       MONGO_URI: mongodb://mongo:27017/volunteerhub
       MONGO_HOST: mongo
@@ -31,11 +37,15 @@ services:
         condition: service_healthy
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      args:
+        PORT: 3300
     restart: unless-stopped
     ports:
       - "3300:3300"
     environment:
+      NODE_ENV: production
       PORT: 3300
       API_BASE_URL: http://localhost:5000
     depends_on:
